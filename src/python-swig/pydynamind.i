@@ -27,6 +27,7 @@
 %}
 
 %include std_vector.i
+%include std_list.i
 %include std_string.i
 %include std_map.i
 %include cpointer.i
@@ -44,6 +45,8 @@
 %include "../core/dmlogsink.h"
 %include "../core/dmsimulation.h"
 namespace std {
+	%template(stringlist) list<string>;
+	%template(mmodulelist) list<DM::Module*>;
     %template(stringvector) vector<string>;
     %template(doublevector) vector<double>;
     %template(systemvector) vector<DM::System* >;
@@ -76,7 +79,7 @@ namespace std {
 }
 
 
-    enum  DataTypes {
+	enum  DataTypes {
 		INT,
 		LONG,
 		DOUBLE,
@@ -85,15 +88,15 @@ namespace std {
 		STRING_LIST,
 		STRING_MAP,
 		BOOL,
-    };
+	};
 
-    enum PortType {
+	enum PortType {
 	INPORT,
 	OUTPORT,
-    };
+	};
 
 
-class Module {
+class DM::Module {
 
 public:
     Module();
@@ -102,8 +105,10 @@ public:
     virtual void run() = 0;
     virtual void init();
     virtual std::string getHelpUrl();
-
+	std::string getName();
+	void setName(std::string);
     std::map<std::string, std::map<std::string, DM::View> >  getViews() const;
+	std::string getUuid() const;
 
 	virtual const char* getClassName() const = 0;
 
@@ -111,6 +116,7 @@ public:
 
     void addParameter(const std::string &name, const DataTypes type, void * ref, const std::string description = "");
     virtual void setParameterValue(std::string name, std::string value);
+	std::list<std::string> getParamterList() const;
 
 protected:
     void addData(std::string name, std::vector<DM::View> view);
