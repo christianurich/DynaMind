@@ -181,6 +181,11 @@ void Simulation::registerModulesFromDirectory(const QDir& dir)
 	}
 }
 
+void Simulation::registerModulesFromDirectory(const std::string dir)
+{
+	this->registerModulesFromDirectory(QDir(QString::fromStdString(dir)));
+}
+
 void Simulation::registerModulesFromDefaultLocation()
 {
 	QVector<QDir> cpv;

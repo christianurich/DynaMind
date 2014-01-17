@@ -124,6 +124,9 @@ public:
 	/** @brief registers all acceptable modules in the provided directory*/
 	void registerModulesFromDirectory(const QDir& dir);
 
+	/** @brief registers all acceptable modules in the provided directory*/
+	void registerModulesFromDirectory(const std::string dir);
+
 	/** @brief connects to ports via a link */
 	virtual bool addLink(Module* source, std::string outPort, 
 						Module* dest, std::string inPort, bool checkStream = true);
