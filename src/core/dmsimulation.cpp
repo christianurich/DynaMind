@@ -362,6 +362,11 @@ std::vector<Simulation::Link*> Simulation::getOutOfGroupLinks(const Module* dest
 	return ls;
 }
 
+std::list<std::string> Simulation::getRegisteredModulesList() const
+{
+	return this->moduleRegistry->getRegisteredModules();
+}
+
 bool Simulation::checkGroupStreamForward(Group* g, std::string streamName, bool into)
 {
 	if(!g)

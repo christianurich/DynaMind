@@ -196,6 +196,9 @@ public:
 	/** @brief exports a simulation to a device in xml-like format */
 	void writeSimulation(QIODevice* dest, QString filePath);
 
+	/** @brief returns all links connected to this port */
+	std::list<std::string> getRegisteredModulesList() const;
+
 protected:
 	/** @brief returns the inport data of the link, taking group ports into account */
 	System* getData(Link* l);
