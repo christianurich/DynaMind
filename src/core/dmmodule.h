@@ -238,6 +238,9 @@ public:
 	*/
 	void setParameterValue(const std::string& name, const std::string& value);
 
+	/** @brief Returns Paramter List **/
+	std::list<std::string> getParamterList() const;
+
 protected:
 	/** @brief returns the data from the desired stream */
 	System* getData(const std::string& streamName);

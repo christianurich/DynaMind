@@ -203,6 +203,14 @@ void Module::setOutPortData(const std::string &name, System* data)
 		outPorts[name] = data;
 }
 
+std::list<std::string> Module::getParamterList() const
+{
+	std::list<std::string> list;
+	foreach (Module::Parameter * p, this->getParameters())
+		list.push_back(p->name);
+	return list;
+}
+
 bool Module::inPortsSet() const
 {
 	mforeach(System* data, inPorts)
@@ -392,7 +400,13 @@ std::map<std::string,View> Module::getViewsInStdStream() const
 std::string Module::getUuid() const
 {
 	Logger(Warning) << "module::getUuid() deprecated";
-	return "<Module::getUuid deprecated>";
+
+	const void * address = static_cast<const void*>(this);
+	std::stringstream ss;
+	ss << address;
+	std::string name = ss.str();
+
+	return name;
 }
 
 std::map<std::string, std::map<std::string, DM::View> > Module::getViews() const
