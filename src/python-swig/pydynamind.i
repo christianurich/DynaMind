@@ -43,10 +43,14 @@
 %include "../core/dmlog.h"
 %include "../core/dmlogger.h"
 %include "../core/dmlogsink.h"
+//%include "../core/dmmodule.h"
 %include "../core/dmsimulation.h"
+
+
 namespace std {
 	%template(stringlist) list<string>;
 	%template(mmodulelist) list<DM::Module*>;
+	%template(mmodulemap) map<string, DM::Module*>;
     %template(stringvector) vector<string>;
     %template(doublevector) vector<double>;
     %template(systemvector) vector<DM::System* >;
@@ -173,10 +177,10 @@ void log(std::string s, DM::LogLevel l) {
     DM::Logger(l) << s;
 }
 
-void initlog(){
+void initlog(DM::LogLevel loglevel){
 //Init Logger
 ostream *out = &cout;
-DM::Log::init(new OStreamLogSink(*out), DM::Debug);
+DM::Log::init(new OStreamLogSink(*out), loglevel);
 DM::Logger(DM::Debug) << "Start";
 }
 

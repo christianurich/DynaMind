@@ -75,6 +75,7 @@ PythonEnv::PythonEnv() {
 
 	if(!Py_IsInitialized()) {
 		Py_Initialize();
+		Logger(Standard) << "Initalise Python";
 	}
 	SWIG_PYTHON_INITIALIZE_THREADS;
 	//init_pydynamind();
