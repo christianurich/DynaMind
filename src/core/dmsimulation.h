@@ -93,20 +93,20 @@ enum SimulationStatus {
 * }
 * @endcode
 */
+struct Link
+{
+    Module*		src;
+    std::string outPort;
+    Module*		dest;
+    std::string inPort;
+
+    bool isIntoGroupLink;
+    bool isOutOfGroupLink;
+};
 
 class DM_HELPER_DLL_EXPORT Simulation
 {
 public:
-	struct Link
-	{
-		Module*		src;
-		std::string outPort;
-		Module*		dest;
-		std::string inPort;
-
-		bool isIntoGroupLink;
-		bool isOutOfGroupLink;
-	};
 
 	Simulation();
 

@@ -21,7 +21,7 @@
     #include <dmlogger.h>
     #include <dmlogsink.h>
     #include <dmsimulation.h>
-    #include <iostream>    
+    #include <iostream>
     using namespace std;
     using namespace DM;
 %}
