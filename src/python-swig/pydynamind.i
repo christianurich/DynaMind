@@ -50,6 +50,7 @@
 namespace std {
 	%template(stringlist) list<string>;
 	%template(mmodulelist) list<DM::Module*>;
+    %template(linklist) list<DM::Link*>;
 	%template(mmodulemap) map<string, DM::Module*>;
     %template(stringvector) vector<string>;
     %template(doublevector) vector<double>;
@@ -129,7 +130,7 @@ protected:
 
 };
 
-%extend Module {
+%extend DM::Module {
     %pythoncode %{
     _data = {'d':'Module'}
     def getClassName(self):
@@ -190,7 +191,7 @@ class INodeFactory
 {
     public:
         virtual ~INodeFactory(){}
-        virtual Module *createNode() const = 0;
+        virtual DM::Module *createNode() const = 0;
         virtual std::string getNodeName() const = 0;
         virtual std::string getFileName() const = 0;
 };
