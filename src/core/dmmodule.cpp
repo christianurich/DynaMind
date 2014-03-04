@@ -399,7 +399,7 @@ std::map<std::string,View> Module::getViewsInStdStream() const
 
 std::string Module::getUuid() const
 {
-	Logger(Warning) << "module::getUuid() deprecated";
+    //Logger(Warning) << "module::getUuid() deprecated";
 
 	const void * address = static_cast<const void*>(this);
 	std::stringstream ss;
