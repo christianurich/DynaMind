@@ -79,8 +79,8 @@ PythonEnv::PythonEnv() {
 	}
 	SWIG_PYTHON_INITIALIZE_THREADS;
 	//init_pydynamind();
-	PyThreadState *pts = PyGILState_GetThisThreadState();
-	PyEval_ReleaseThread(pts);
+	//PyThreadState *pts = PyGILState_GetThisThreadState();
+	//PyEval_ReleaseThread(pts);
 
 
 	SWIG_PYTHON_THREAD_BEGIN_BLOCK;
@@ -220,7 +220,7 @@ std::string PythonEnv::registerNodes(ModuleRegistry *registry, const string &mod
 	}
 
 	ostringstream script;
-	script << "import reimport\n";
+	//script << "import reimport\n";
 	script << "import sys\n";
 	script << "import os\n";
 	script << "import pydynamind\n";
@@ -234,7 +234,7 @@ std::string PythonEnv::registerNodes(ModuleRegistry *registry, const string &mod
 	std::string f = QDir::currentPath().toStdString();
 	script << "site.addsitedir(\""<< QDir::currentPath().toStdString() << "\") \n";
 	if (exists){
-		script << "reimport.reimport(*reimport.modified())\n";
+		//script << "reimport.reimport(*reimport.modified())\n";
 	}
 	else
 	{
