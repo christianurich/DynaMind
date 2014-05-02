@@ -104,29 +104,32 @@ namespace std {
 class DM::Module {
 
 public:
-    Module();
-    virtual ~Module();
-    virtual bool createInputDialog();
-    virtual void run() = 0;
-    virtual void init();
-    virtual std::string getHelpUrl();
+	Module();
+	virtual ~Module();
+	virtual bool createInputDialog();
+	virtual void run() = 0;
+	virtual void init();
+	virtual std::string getHelpUrl();
 	std::string getName();
 	void setName(std::string);
-    std::map<std::string, std::map<std::string, DM::View> >  getViews() const;
+	std::map<std::string, std::map<std::string, DM::View> >  getViews() const;
 	std::string getUuid() const;
 
 	virtual const char* getClassName() const = 0;
 
-    virtual std::string getParameterAsString(std::string Name);
+	virtual std::string getParameterAsString(std::string Name);
 
-    void addParameter(const std::string &name, const DataTypes type, void * ref, const std::string description = "");
-    virtual void setParameterValue(std::string name, std::string value);
+	void addParameter(const std::string &name, const DataTypes type, void * ref, const std::string description = "");
+	virtual void setParameterValue(std::string name, std::string value);
 	std::list<std::string> getParamterList() const;
 
+	virtual std::vector<std::string> getOutPortNames() const;
+	virtual std::vector<std::string> getInPortNames() const;
+
 protected:
-    void addData(std::string name, std::vector<DM::View> view);
-    DM::System * getData(std::string dataname);
-    DM::RasterData * getRasterData(std::string dataname, const DM::View & view);
+	void addData(std::string name, std::vector<DM::View> view);
+	DM::System * getData(std::string dataname);
+	DM::RasterData * getRasterData(std::string dataname, const DM::View & view);
 
 };
 
