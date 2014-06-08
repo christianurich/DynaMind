@@ -126,6 +126,8 @@ public:
 	virtual std::vector<std::string> getOutPortNames() const;
 	virtual std::vector<std::string> getInPortNames() const;
 
+	DM::System* getOutPortData(const std::string &name) const;
+
 protected:
 	void addData(std::string name, std::vector<DM::View> view);
 	DM::System * getData(std::string dataname);
